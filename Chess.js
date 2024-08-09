@@ -1,8 +1,6 @@
-// Inserting the Images
 function insertImage() {
 
     document.querySelectorAll('.box').forEach(image => {
-
         if (image.innerText.length !== 0) {
             if (image.innerText == 'Wpawn' || image.innerText == 'Bpawn') {
                 image.innerHTML = `${image.innerText} <img class='allimg allpawn' src="${image.innerText}.png" alt="">`
@@ -19,12 +17,9 @@ function insertImage() {
 }
 insertImage()
 
-//Coloring
 function coloring() {
     const color = document.querySelectorAll('.box')
-
     color.forEach(color => {
-
         getId = color.id
         arr = Array.from(getId)
         arr.shift()
@@ -42,22 +37,16 @@ function coloring() {
 }
 coloring()
 
-//function to not remove the same team element
 function reddish() {
     document.querySelectorAll('.box').forEach(i1 => {
         if (i1.style.backgroundColor == 'pink') {
-
             document.querySelectorAll('.box').forEach(i2 => {
 
                 if (i2.style.backgroundColor == 'green' && i2.innerText.length !== 0) {
-
                     greenText = i2.innerText
-
                     pinkText = i1.innerText
-
                     pinkColor = ((Array.from(pinkText)).shift()).toString()
                     greenColor = ((Array.from(greenText)).shift()).toString()
-
                     getId = i2.id
                     arr = Array.from(getId)
                     arr.shift()
@@ -82,10 +71,8 @@ whiteCastleChance=true
 blackCastleChance=true
 
 document.querySelectorAll('.box').forEach(item => {
-
     item.addEventListener('click', function () {
 
-        // To delete the opposite element
         if (item.style.backgroundColor == 'green' && item.innerText.length == 0) {
             tog = tog + 1
         }
@@ -116,7 +103,6 @@ document.querySelectorAll('.box').forEach(item => {
         aup = eval(arr.join(''))
         a = aside + aup
 
-        // Function to display the available paths for all pieces
         function whosTurn(toggle) {
 
             // PAWN
@@ -124,7 +110,6 @@ document.querySelectorAll('.box').forEach(item => {
                 item.style.backgroundColor = 'pink'
 
                 if (tog % 2 !== 0 && aup < 800) {
-
                     if (aup == 200 && document.getElementById(`b${a + 100}`).innerText.length == 0) {
                         document.getElementById(`b${a + 100}`).style.backgroundColor = 'green'
                         if (aup == 200 && document.getElementById(`b${a + 200}`).innerText.length == 0) {
@@ -172,18 +157,14 @@ document.querySelectorAll('.box').forEach(item => {
             if (item.innerText == `${toggle}king`) {
                 if (aside < 8) {
                     document.getElementById(`b${a + 1}`).style.backgroundColor = 'green'
-
                 }
                 if (aside > 1) {
-
                     document.getElementById(`b${a - 1}`).style.backgroundColor = 'green'
                 }
                 if (aup < 800) {
-
                     document.getElementById(`b${a + 100}`).style.backgroundColor = 'green'
                 }
                 if (aup > 100) {
-
                     document.getElementById(`b${a - 100}`).style.backgroundColor = 'green'
                 }
 
@@ -301,9 +282,7 @@ document.querySelectorAll('.box').forEach(item => {
                         break
                     }
                 }
-
                 item.style.backgroundColor = 'pink'
-
             }
 
             // QUEEN
@@ -420,7 +399,6 @@ document.querySelectorAll('.box').forEach(item => {
             }
         }
 
-        // Toggling the turn
         if (tog % 2 !== 0) {
             document.getElementById('tog').innerText = "White's Turn"
             whosTurn('W')
@@ -430,19 +408,15 @@ document.querySelectorAll('.box').forEach(item => {
             whosTurn('B')
         }
         reddish()
-
-        // winning()
         numOfKings = 0
 
         document.querySelectorAll('.box').forEach(win => {
             if (win.innerText == 'Wking' || win.innerText == 'Bking') {
                 numOfKings += 1
             }
-
         })
         if (numOfKings == 1) {
             setTimeout(() => {
-                // console.log(`${toggle}`) 
                 if (tog % 2 == 0) {
                     alert('White Wins !!')
                     location.reload()
@@ -456,7 +430,6 @@ document.querySelectorAll('.box').forEach(item => {
     })
 })
 
-// Moving the element
 document.querySelectorAll('.box').forEach(item => {
     item.addEventListener('click', function () {
         if (item.style.backgroundColor == 'pink') {
@@ -543,7 +516,6 @@ document.querySelectorAll('.box').forEach(item => {
     })
 })
 
-// Prvents from selecting multiple elements
 z = 0
 document.querySelectorAll('.box').forEach(ee => {
     ee.addEventListener('click', function () {
